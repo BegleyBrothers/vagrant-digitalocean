@@ -9,6 +9,8 @@ en:
       droplet_ip: "Assigned IP address: %{ip}"
       droplet_private_ip: "Private IP address: %{ip}"
       destroying: "Destroying the droplet..."
+      floatingip: "Attaching Floating IP...."
+      floatedip: "Attached Floating IP:  %{floatingip}"
       shutting_down: "Shutting down the droplet..."
       powering_off: "Powering off the droplet..."
       powering_on: "Powering on the droplet..."

@@ -99,7 +99,7 @@ module VagrantPlugins
             result = self.request("/v2/actions/#{id}")
 
             yield result if block_given?
-            raise 'not ready' if result['action']['status'] != 'completed'
+            raise 'not ready' if result['action']['status'] != 'completed' || result['action']['status'] != 'active'
           end
         end
       end

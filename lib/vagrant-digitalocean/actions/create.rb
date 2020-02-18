@@ -42,12 +42,14 @@ module VagrantPlugins
 
           # assign a specific floating IP to this droplet
           if @machine.provider_config.floating_ip
+            env[:ui].info I18n.t('vagrant_digital_ocean.info.floatingip')
             result = @client.post("/v2/floating_ips/#{@machine.provider_config.floating_ip}/actions", {
               :type => 'assign',
               :droplet_id => @machine.id
             })
+            @client.wait_for_event(env, result['links']['actions'].first['id'])
+            @env.ui.info I18n.t('vagrant_digital_ocean.info.floatedip', floatingip: @machine.provider_config.floating_ip)
           end
-
           # refresh droplet state with provider and output ip address
           droplet = Provider.droplet(@machine, :refresh => true)
           public_network = droplet['networks']['v4'].find { |network| network['type'] == 'public' }
@@ -97,3 +99,4 @@ module VagrantPlugins
     end
   end
 end
+ee
