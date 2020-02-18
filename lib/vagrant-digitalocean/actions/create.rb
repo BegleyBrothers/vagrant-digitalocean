@@ -44,7 +44,7 @@ module VagrantPlugins
           if @machine.provider_config.floating_ip
             result = @client.post("/v2/floating_ips/#{@machine.provider_config.floating_ip}/actions", {
               :type => 'assign',
-              :droplet_id => @machine.id,
+              :droplet_id => @machine.id
             })
           end
 
