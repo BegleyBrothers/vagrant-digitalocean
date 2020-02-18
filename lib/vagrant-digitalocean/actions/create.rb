@@ -64,7 +64,7 @@ module VagrantPlugins
           end
 
           @machine.config.ssh.username = user
-
+          puts 'DO WE SEE THIS'
           # assign a specific floating IP to this droplet
           @env.ui.info @machine.inspect
           if @machine.provider_config.floating_ip
